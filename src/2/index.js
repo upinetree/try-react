@@ -7,7 +7,7 @@ var Comment = React.createClass({
       </div>
     );
   }
-})
+});
 
 var CommentList = React.createClass({
   render: function() {
@@ -18,7 +18,7 @@ var CommentList = React.createClass({
       </div>
     );
   }
-})
+});
 
 var CommentForm = React.createClass({
   render: function() {
@@ -28,7 +28,7 @@ var CommentForm = React.createClass({
       </div>
     );
   }
-})
+});
 
 var CommentBox = React.createClass({
   render: function() {
@@ -40,6 +40,6 @@ var CommentBox = React.createClass({
       </div>
     );
   }
-})
+});
 
 React.render(<CommentBox />, document.getElementById("comments"));
