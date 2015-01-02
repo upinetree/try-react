@@ -1,0 +1,12 @@
+{
+  "name": "try-react",
+  "version": "1.0.0",
+  "description": "Try React.js",
+  "scripts": {
+    "jsx": "jsx src/ public/"
+  },
+  "devDependencies": {
+    "react-tools": "^0.12.2"
+  },
+  "private": true
+}
