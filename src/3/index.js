@@ -13,7 +13,7 @@ var CommentList = React.createClass({
   render: function() {
     var commentNodes = this.props.data.map(function(comment) {
       return (
-        <Comment author={comment.user.login}>
+        <Comment key={comment.id} author={comment.user.login}>
           {comment.body}
         </Comment>
       );
