@@ -1,16 +1,25 @@
 var TODOS = [
-  {title: 'Try React.js'},
-  {title: 'Buy a iPhone 6'},
-  {title: 'Read a book'}
+  {id: 1, title: 'Try React.js'  , done: false},
+  {id: 2, title: 'Buy a iPhone 6', done: false},
+  {id: 3, title: 'Read a book'   , done: false}
 ]
 
 var Todos = React.createClass({
+  handleToggle: function(todo) {
+    this.props.onToggle(todo.id);
+  },
+
   render: function() {
     var todoNodes = [];
     this.props.todos.forEach(function(todo) {
       title = todo.title;
-      todoNodes.push(<li key={title}>{title}</li>);
-    });
+      className = todo.done ? "done" : ""
+      todoNodes.push(
+        <li className={className} onClick={this.handleToggle.bind(this, todo)} key={title}>
+          {title}
+        </li>
+      );
+    }.bind(this));
 
     return (
       <ul>{todoNodes}</ul>
@@ -55,11 +64,19 @@ var TodoApp = React.createClass({
     this.setState({todos: newTodos});
   },
 
+  toggle: function(todoId) {
+    updatedTodos = this.state.todos.map(function(todo) {
+      if (todo.id !== todoId) { return todo };
+      return {id: todo.id, title: todo.title, done: !todo.done};
+    });
+    this.setState({todos: updatedTodos});
+  },
+
   render: function() {
     return (
       <div>
         <TodoInput onNewTodo={this.addTodo} />
-        <Todos todos={this.state.todos} />
+        <Todos todos={this.state.todos} onToggle={this.toggle} />
       </div>
     );
   }
