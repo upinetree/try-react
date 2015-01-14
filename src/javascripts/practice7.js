@@ -57,7 +57,9 @@ var TodoApp = React.createClass({
 
   addTodo: function(title) {
     newTodos = this.state.todos.concat({
-      title: title
+      id: this.state.todos.length + 1,
+      title: title,
+      done: false
     });
     this.setState({todos: newTodos});
   },
