@@ -11,11 +11,10 @@ var Todos = React.createClass({
 
   render: function() {
     todoNodes = this.props.todos.map(function(todo) {
-      title = todo.title;
       className = todo.done ? "done" : ""
       return (
-        <li className={className} onClick={this.handleToggle.bind(this, todo)} key={title}>
-          {title}
+        <li className={className} onClick={this.handleToggle.bind(this, todo)} key={todo.id}>
+          {todo.title}
         </li>
       );
     }.bind(this));
